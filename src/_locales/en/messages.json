@@ -1,0 +1,61 @@
+{
+    "appName": {
+        "message": "Distract Me Not"
+    }
+    ,
+    "appDesc": {
+        "message": "Stay focused in a world full of distractions."
+    }
+    ,
+    "settings_blacklist_title": {
+        "message": "Blacklist"
+    }
+    ,
+    "settings_whitelist_title": {
+        "message": "Whitelist"
+    }
+    ,
+    "settings_whitelist_description": {
+        "message": "You can only visit the following websites"
+    }
+    ,
+    "settings_blacklist_description": {
+        "message": "You cannot visit the following websites"
+    }
+    ,
+    "settings_newblackbox_placeholder": {
+        "message": "Please enter the URL of the website here"
+    }
+    ,
+    "overlay_message": {
+        "message": "Where are you going..."
+    }
+    ,
+    "main_settings_tooltip": {
+        "message": "Settings"
+    }
+    ,
+    "main_add_blacklist_tooltip": {
+        "message": "Add current website to Blacklist"
+    }
+    ,
+    "main_add_whitelist_tooltip": {
+        "message": "Add current website to Whitelist"
+    }
+    ,
+    "main_status": {
+        "message": "Status"
+    }
+    ,
+    "main_mode": {
+        "message": "Mode"
+    }
+    ,
+    "private_mode": {
+        "message": "For some browser compatibility reasons, the panel may not work on private mode. Please use the settings page to whitelist or blacklist websites."
+    }
+    ,
+    "panel_issue": {
+        "message": "Panel is not accessible at the current time."
+    }
+}
