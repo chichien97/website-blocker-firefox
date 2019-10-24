@@ -17,14 +17,17 @@
                 <div class="choose-background">
                     <input type="radio" id="blacklist-toggle" class="choose-mode" name="choose-mode">
                     <input type="radio" id="whitelist-toggle" class="choose-mode" name="choose-mode">
+                    <input type="radio" id="setPassword-toggle" class="choose-mode" name="choose-mode">
                     <label id="settings_blacklist_title" data-l10n-id="settings_blacklist_title" for="blacklist-toggle"> Blacklist </label>
                     <label id="settings_whitelist_title" data-l10n-id="settings_whitelist_title" for="whitelist-toggle"> Whitelist </label>
-                    <div class="choose-slider"> </div>
+                    <label id="settings_setPassword_title" data-l10n-id="settings_setPassword_title" for="setPassword-toggle"> Set Password </label>
+                    <div class="choose-slider"></div>
                 </div>
             </div>
             <div class="section">
                 <div id="settings-whitelist-description" data-l10n-id="settings_whitelist_description" class="disappear"></div>
                 <div id="settings-blacklist-description" data-l10n-id="settings_blacklist_description" class="">You can not visit the following websites</div>
+                <div id="settings-setPassword-description" data-l10n-id="settings_setPassword_description" class="disappear"></div>
             </div>
             <div class="section">
                 <ul id="blacklist" class="list-box disappear">
@@ -45,6 +48,19 @@
                         <img src="icons/delete.png" class="x buttons" alt="X" />
                         <img src="icons/favicon.png" class="favicon" />
                         <span>facebook.com</span>
+                    </li>
+                </ul>
+                <ul id="setPassword" class="list-box disappear">
+                    <li id="set-password">
+                        <input id="set-password-box" class="domain new-list-box" type="password" maxlength="18" value="" />
+                        <input id="verify-password-box" class="domain new-list-box disappear" type="password" maxlength="18" value="" />
+                        <small id="settings-password-status" class="disappear"></small>
+                    </li>
+                    <li>
+                        <!-- <button id="show-password" type="button">Show password</button> -->
+                        <!-- <img src="icons/delete.png" class="x buttons" alt="X" />
+                        <img src="icons/favicon.png" class="favicon" />
+                        <span>facebook.com</span> -->
                     </li>
                 </ul>
             </div>
