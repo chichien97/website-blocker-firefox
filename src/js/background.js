@@ -4,6 +4,7 @@ var blacklist;
 var whitelist;
 var isWhitelistMode = false;
 var isEnabled = false;
+var unlockPassCode;
 
 function getDefaultWhitelist() {
     return ["wikipedia.org"]
@@ -179,7 +180,8 @@ function init() {
         whiteList: getDefaultWhitelist(),
         whitelist: null,
         isWhitelistMode: false,
-        isEnabled: false
+        isEnabled: false,
+        unlockPassCode: getUnlockPassCode()
     }, function(items) {
         blacklist = items.blackList;
         whitelist = items.whiteList;
@@ -192,6 +194,7 @@ function init() {
             }, function(items) {});
         }
         isWhitelistMode = items.isWhitelistMode;
+        unlockPassCode = items.unlockPassCode;
         isEnabled = items.isEnabled;
         if (isEnabled) {
             enable();

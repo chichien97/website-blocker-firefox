@@ -40,20 +40,24 @@
                     </span>
                 </div>
                 <div class="option">
-                    <span class="">Lock</span>
+                    <span class="main_password" data-l10n-id="main_password">Password</span>
                     <span class="pull-right">
-                        <button class="btn-sm btn-set-pass btn-info" id="">Set a password</button>
+                        <button class="btn-sm btn-set-pass btn-info" id="btn-Set-Password">Set a password</button>
+                        <input type="password" id="sPassword" class="btn-sm input-password disappear" maxlength="18" placeholder="Enter password"/>
+                        <input type="password" id="vPassword" class="btn-sm input-password disappear" maxlength="18" placeholder="Enter password"/>
+                        <p class="btn-sm disappear" id="set-Pwdstatus">Password set.</p>
+                        <button class="btn-sm btn-unlock btn-warning disappear" id="btn-Unlock">Unlock</button>
                     </span>
                 </div>
             </div>
             <div class="container row">
                 <div id="setting-container" class="tooltip-container">
                     <div id="setting-icon" class="buttons tt-right"></div>
-                    <span id="main_settings_tooltip" data-l10n-id="main_settings_tooltip">Setting</span>
+                    <span id="main_settings_tooltip" data-l10n-id="main_settings_tooltip"></span>
                 </div>
                 <div id="blacklist-container" class="tooltip-container">
                     <div id="add-to-blacklist-icon" class="buttons tt-left"></div>
-                    <span id="main_add_blacklist_tooltip" data-l10n-id="main_add_blacklist_tooltip">Add current website to bla bal bsla</span>
+                    <span id="main_add_blacklist_tooltip" data-l10n-id="main_add_blacklist_tooltip"></span>
                 </div>
             </div>
         </div>

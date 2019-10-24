@@ -15,6 +15,10 @@
         "message": "Whitelist"
     }
     ,
+    "settings_setPassword_title": {
+        "message": "Password"
+    }
+    ,
     "settings_whitelist_description": {
         "message": "You can only visit the following websites"
     }
@@ -23,8 +27,20 @@
         "message": "You cannot visit the following websites"
     }
     ,
+    "settings_setpassword_description": {
+        "message": "Set up a password"
+    }
+    ,
     "settings_newblackbox_placeholder": {
         "message": "Please enter the URL of the website here"
+    }
+    ,
+    "settings_setPassword_placeholder": {
+        "message": "Please enter password here"
+    }
+    ,
+    "settings_verifyPassword_placeholder": {
+        "message": "Please verify password here"
     }
     ,
     "overlay_message": {
@@ -49,6 +65,10 @@
     ,
     "main_mode": {
         "message": "Mode"
+    }
+    ,
+    "main_password": {
+        "message": "Password"
     }
     ,
     "private_mode": {
