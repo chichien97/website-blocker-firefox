@@ -95,7 +95,7 @@ ul {
     color: black;
     /*z-index: 0;*/
     display: inline-block;
-    width: 32%;
+    width: 48%;
     height: 100%;
     -webkit-border-radius: 100px/100px;
     text-decoration: none;
@@ -112,7 +112,7 @@ ul {
     background-color: rgba(33, 150, 243, 1);
     z-index: -1;
     left: 2%;
-    width: 32%;
+    width: 48%;
     height: 100%;
     position: absolute;
     top: 0px;
@@ -129,7 +129,7 @@ ul {
 
 #blacklist-toggle:checked ~ .choose-slider {
     background: rgba(33, 150, 243, 1);
-    left: 0.5%;
+    left: 3%;
 }
 
 #blacklist-toggle:checked ~ #settings_blacklist_title {
@@ -142,16 +142,7 @@ ul {
 
 #whitelist-toggle:checked ~ .choose-slider {
     background: rgba(33, 150, 243, 1);
-    left: 32.25%;
-}
-
-#setPassword-toggle:checked ~ #settings_setPassword_title {
-    color: rgba(255, 255, 255, 1);
-}
-
-#setPassword-toggle:checked ~ .choose-slider {
-    background: rgba(33, 150, 243, 1);
-    left: 64%;
+    left: 46%;
 }
 
 .section {
@@ -197,15 +188,9 @@ ul {
     font-size: 12px;
 }
 
-#setPassword li {
-    margin-bottom: 10px;
-    font-size: 12px;
-}
-
 #settings-whitelist-description,
-#settings-blacklist-description,
-#settings-setPassword-description {
-    padding-top: 1rem;
+#settings-blacklist-description {
+    padding-top: 85px;
     text-align: left;
     padding-bottom: 10px;
 }

@@ -126,29 +126,16 @@
         var t = event.target;
         var blist = document.getElementById("blacklist");
         var wlist = document.getElementById("whitelist");
-        var pSet = document.getElementById("setPassword");
         if (t.id == "blacklist-toggle") {
             addClass(wlist, "disappear");
-            addClass(pSet, "disappear");
             removeClass(blist, "disappear");
             addClass(document.getElementById("settings-whitelist-description"), "disappear");
-            addClass(document.getElementById("settings-setPassword-description"), "disappear");
             removeClass(document.getElementById("settings-blacklist-description"), "disappear");
         } else if (t.id == "whitelist-toggle") {
             addClass(blist, "disappear");
-            addClass(pSet, "disappear");
             removeClass(wlist, "disappear");
-            addClass(document.getElementById("settings-blacklist-description"), "disappear");
-            addClass(document.getElementById("settings-setPassword-description"), "disappear");
             removeClass(document.getElementById("settings-whitelist-description"), "disappear");
-        }
-        else if (t.id == "setPassword-toggle") {
-            addClass(blist, "disappear");
-            addClass(wlist, "disappear");
-            removeClass(pSet, "disappear");
             addClass(document.getElementById("settings-blacklist-description"), "disappear");
-            addClass(document.getElementById("settings-whitelist-description"), "disappear");
-            removeClass(document.getElementById("settings-setPassword-description"), "disappear");
         }
         var isWhitelistMode = t.id === "whitelist-toggle" ? true : false;
         bgpage.setIsWhitelistMode(isWhitelistMode);
@@ -185,21 +172,7 @@
         });
     }
 
-    function checkPassCode(){
-        var sPass = document.getElementById("set-password-box");
-        var vPass = document.getElementById("verify-password-box");
-        chrome.storage.local.get("unlockPassCode", function(items){
-            if(items.unlockPassCode != null){
-                addClass(sPass, "disappear");
-                removeClass(vPass, "disappear");
-                sPass.value = "";
-                vPass.placeholder = "Please verify your password here";
-            }
-        });
-    }
-
     window.onload = function() {
-        checkPassCode();
         window.addEventListener("click", function(event) {
             var t = event.target;
             if (hasClass(t, "x")) {
@@ -210,71 +183,11 @@
             if (hasClass(t, "choose-mode")) {
                 chooseMode(event);
             }
-            if (t.id == "show-password"){
-                chrome.storage.local.get("unlockPassCode", function(items){
-                    alert(items.unlockPassCode);  
-                });
-            }
         }, false);
         window.addEventListener("contextmenu", function(event) {
             event.preventDefault();
             return false;
         }, true);
-        document.getElementById("set-password-box").addEventListener("keypress", function(e) {
-            var inputSetPass = document.getElementById("set-password-box");
-            var inputVerifyPass = document.getElementById("verify-password-box");
-            if (!e) {
-                e = window.event;
-            }
-            var keyCode = e.keyCode || e.which;
-            if (keyCode === 13) {
-                // Add
-                // alert("qqq"+inputVPass);
-                chrome.storage.local.set({
-                    unlockPassCode: inputSetPass.value
-                });
-                addClass(inputSetPass, "disappear");
-                removeClass(inputVerifyPass, "disappear");
-                inputSetPass.value = "";
-                inputVerifyPass.placeholder = "Please verify your password here";
-                bgpage.setIsEnabled(true);
-                browser.storage.local.set({
-                    isEnabled: true
-                }, function() {});
-                // addWhitelist();
-                // document.getElementById("new-white-box").blur();
-            }
-        }, false);
-        document.getElementById("verify-password-box").addEventListener("keypress", function(e) {
-            var inputSetPass = document.getElementById("set-password-box");
-            var inputVerifyPass = document.getElementById("verify-password-box");
-            if (!e) {
-                e = window.event;
-            }
-            var keyCode = e.keyCode || e.which;
-            if (keyCode === 13) {
-                // Verify
-                chrome.storage.local.get("unlockPassCode", function(items){
-                    // alert(items.unlockPassCode);
-                    if(inputVerifyPass.value == items.unlockPassCode){
-                        addClass(inputVerifyPass, "disappear");
-                        removeClass(inputSetPass, "disappear");
-                        inputVerifyPass.value = "";
-                        inputSetPass.placeholder = "Please enter password here";
-                        bgpage.setIsEnabled(false);
-                        browser.storage.local.set({
-                            isEnabled: false,
-                        }, function() {});
-                        chrome.storage.local.remove("unlockPassCode");
-                    }  
-                    else {
-                        alert("invalid password");
-                    }
-                });
-                // addWhitelist();
-                // document.getElementById("new-white-box").blur();
-            }
-        }, false);
         document.getElementById("new-black-box").addEventListener("keypress", function(e) {
             if (!e) {
                 e = window.event;
@@ -307,13 +220,9 @@
         });
         setText("settings_blacklist_title", browser.i18n.getMessage("settings_blacklist_title"));
         setText("settings_whitelist_title", browser.i18n.getMessage("settings_whitelist_title"));
-        setText("settings_setPassword_title", browser.i18n.getMessage("settings_setPassword_title"));
         document.getElementById("new-black-box").placeholder = browser.i18n.getMessage("settings_newblackbox_placeholder");
         document.getElementById("new-white-box").placeholder = browser.i18n.getMessage("settings_newblackbox_placeholder");
-        document.getElementById("set-password-box").placeholder = browser.i18n.getMessage("settings_setPassword_placeholder");
-        document.getElementById("verify-password-box").placeholder = browser.i18n.getMessage("settings_verifyPassword_placeholder");
         setText("settings-whitelist-description", browser.i18n.getMessage("settings_whitelist_description"));
         setText("settings-blacklist-description", browser.i18n.getMessage("settings_blacklist_description"));
-        setText("settings-setPassword-description", browser.i18n.getMessage("settings_setpassword_description"));
     }
 })();
