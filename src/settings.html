@@ -17,15 +17,12 @@
                 <div class="choose-background">
                     <input type="radio" id="blacklist-toggle" class="choose-mode" name="choose-mode">
                     <input type="radio" id="whitelist-toggle" class="choose-mode" name="choose-mode">
-                    <input type="radio" id="setPassword-toggle" class="choose-mode" name="choose-mode">
                     <label id="settings_blacklist_title" data-l10n-id="settings_blacklist_title" for="blacklist-toggle"> Blacklist </label>
                     <label id="settings_whitelist_title" data-l10n-id="settings_whitelist_title" for="whitelist-toggle"> Whitelist </label>
-                    <label id="settings_setPassword_title" data-l10n-id="settings_setPassword_title" for="setPassword-toggle"> Set Password </label>
                     <div class="choose-slider"> </div>
                 </div>
             </div>
             <div class="section">
-                <div id="settings-setPassword-description" data-l10n-id="settings_setPassword_title" class="disappear"></div>
                 <div id="settings-whitelist-description" data-l10n-id="settings_whitelist_description" class="disappear"></div>
                 <div id="settings-blacklist-description" data-l10n-id="settings_blacklist_description" class="">You can not visit the following websites</div>
             </div>
@@ -42,16 +39,6 @@
                 </ul>
                 <ul id="whitelist" class="list-box">
                     <li id="new-white">
-                        <input id="new-white-box" class="domain new-list-box" type="text" maxlength="50" value="" />
-                    </li>
-                    <li>
-                        <img src="icons/delete.png" class="x buttons" alt="X" />
-                        <img src="icons/favicon.png" class="favicon" />
-                        <span>facebook.com</span>
-                    </li>
-                </ul>
-                <ul id="setPassword" class="list-box">
-                    <li id="set-passw">
                         <input id="new-white-box" class="domain new-list-box" type="text" maxlength="50" value="" />
                     </li>
                     <li>

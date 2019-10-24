@@ -17,10 +17,6 @@
         });
     }
 
-    function addTimer(){
-        
-    }
-
     function init() {
         setText("app_name", browser.i18n.getMessage("appName"));
         setText("main_settings_tooltip", browser.i18n.getMessage("main_settings_tooltip"));
