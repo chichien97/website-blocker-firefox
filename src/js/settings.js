@@ -209,9 +209,17 @@
         window.addEventListener("click", function(event) {
             var t = event.target;
             if (hasClass(t, "x")) {
-                var listType = t.parentNode.parentNode.id;
-                t.parentNode.parentNode.removeChild(t.parentNode);
-                saveList(listType);
+                chrome.storage.local.get("unlockPassCode", function(items){
+                    if(items.unlockPassCode){
+                        alert('Unlock Password required.');
+                        return false;
+                    }
+                    else{
+                        var listType = t.parentNode.parentNode.id;
+                        t.parentNode.parentNode.removeChild(t.parentNode);
+                        saveList(listType);
+                    }
+                });
             }
             if (hasClass(t, "choose-mode")) {
                 chooseMode(event);
