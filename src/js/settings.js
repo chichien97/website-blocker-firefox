@@ -142,6 +142,7 @@
             addClass(document.getElementById("settings-setPassword-description"), "disappear");
             removeClass(document.getElementById("settings-whitelist-description"), "disappear");
         }
+        // Display tab for the password section
         else if (t.id == "setPassword-toggle") {
             addClass(blist, "disappear");
             addClass(wlist, "disappear");
@@ -185,10 +186,11 @@
         });
     }
 
+    // Check password function
     function checkPassCode(){
         var sPass = document.getElementById("set-password-box");
         var vPass = document.getElementById("verify-password-box");
-        chrome.storage.local.get("unlockPassCode", function(items){
+        chrome.storage.local.get("unlockPassCode", function(items){     // Get password from local storage
             if(items.unlockPassCode != undefined){
                 addClass(sPass, "disappear");
                 removeClass(vPass, "disappear");
@@ -224,27 +226,29 @@
             if (hasClass(t, "choose-mode")) {
                 chooseMode(event);
             }
-            if (t.id == "show-password"){
-                chrome.storage.local.get("unlockPassCode", function(items){
-                    alert(items.unlockPassCode);  
-                });
-            }
+//             if (t.id == "show-password"){
+//                 chrome.storage.local.get("unlockPassCode", function(items){
+//                     alert(items.unlockPassCode);  
+//                 });
+//             }
         }, false);
         window.addEventListener("contextmenu", function(event) {
             event.preventDefault();
             return false;
         }, true);
-        document.getElementById("set-password-box").addEventListener("keypress", function(e) {
+        // Get value from set password input id
+        document.getElementById("set-password-box").addEventListener("keypress", function(e) { 
             var inputSetPass = document.getElementById("set-password-box");
             var inputVerifyPass = document.getElementById("verify-password-box");
             if (!e) {
                 e = window.event;
             }
             var keyCode = e.keyCode || e.which;
+            // Get keycode from event
             if (keyCode === 13) {
                 // Add
-                // alert("qqq"+inputVPass);
-                chrome.storage.local.set({
+                // When "enter" key press, run set password function
+                chrome.storage.local.set({              // Set password into local storage
                     unlockPassCode: inputSetPass.value
                 });
                 addClass(inputSetPass, "disappear");
@@ -259,7 +263,8 @@
                 // document.getElementById("new-white-box").blur();
             }
         }, false);
-        document.getElementById("verify-password-box").addEventListener("keypress", function(e) {
+        // Get verify password input box when keyboard pressed
+        document.getElementById("verify-password-box").addEventListener("keypress", function(e) {   
             var inputSetPass = document.getElementById("set-password-box");
             var inputVerifyPass = document.getElementById("verify-password-box");
             var statusPass = document.getElementById("settings-password-status");
