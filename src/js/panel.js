@@ -3,6 +3,7 @@
     var browser = browser || chrome;
     var bgpage = browser.extension.getBackgroundPage();
 
+    // Function to set, verify and unlock password
     function setPassword(){
         var passInput = document.getElementById("sPassword");
         var btnSet = document.getElementById("btn-Set-Password");
@@ -33,6 +34,7 @@
             }
         });
     }
+    // End of function
     
     function toggleAddIcon(isWhitelistMode) {
         browser.tabs.query({
@@ -189,9 +191,11 @@
             toggleAddIcon(isWhitelistMode);
             setText("main_add_blacklist_tooltip", isWhitelistMode ? browser.i18n.getMessage("main_add_whitelist_tooltip") : browser.i18n.getMessage("main_add_blacklist_tooltip"));
         }
+        // Get set password button id, when onclick run set password function
         else if(t.id == "btn-Set-Password"){
             setPassword();
         }
+        // Get unlock button id, when onclick run unlock password function
         else if(t.id == "btn-Unlock"){
             chrome.storage.local.get("unlockPassCode", function(items){
                 // alert(items.unlockPassCode);
@@ -210,12 +214,15 @@
     window.addEventListener("keypress", function(event){
         var tgt = event.target;
         // alert(tgt.id);
+        // Get set password id
         if(tgt.id == "sPassword"){
             var inputPwd = document.getElementById("sPassword");
             var btnUnlock = document.getElementById("btn-Unlock");
             var statusPwd = document.getElementById("set-Pwdstatus");
             var statusSwitch = document.getElementById("status-switch");
             var keyCode = event.keyCode || event.which;
+            // 13 == "Enter" key on keyboard
+            // When "Enter" is press, run function below
             if (keyCode === 13) {
                 addClass(inputPwd, "disappear");
                 removeClass(statusPwd, "disappear");
@@ -232,11 +239,12 @@
                     //     alert(items.unlockPassCode);
                     // })
                 }, 500);
-                chrome.storage.local.set({
+                chrome.storage.local.set({          // Save the password into local storage
                     unlockPassCode: inputPwd.value
                 })
             }
         }
+        // Get verify password input id
         else if (tgt.id == "vPassword"){
             var inputPwd = document.getElementById("vPassword");
             var btnSet = document.getElementById("btn-Set-Password");
@@ -255,11 +263,11 @@
                             addClass(statusPwd, "disappear");
                             removeClass(btnSet, "disappear");
                             statusSwitch.checked = false;
-                            bgpage.setIsEnabled(false);
+                            bgpage.setIsEnabled(false); // Close the background lock function
                             browser.storage.local.set({
                                 isEnabled: false,
                             }, function() {});
-                            chrome.storage.local.remove("unlockPassCode");
+                            chrome.storage.local.remove("unlockPassCode"); // Remove the data in local storage
                         }, 500);
                     }
                     else{
